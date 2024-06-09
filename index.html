@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typing Speed Test</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Typing Speed Test</h1>
+    <div id="content-wrapper">
+      <div class="stats" id="historical-data">
+        <p id="stat-title">User's statistics</p>
+        <p>Tests taken: <span id="tests-taken">0</span></p>
+        <p>Avergate WPM: <span id="avg-wpm">0</span></p>
+        <p>Average accuracy: <span id="avg-accuracy">0</span>%</p>
+        <p>Average errors: <span id="avg-errors">0</span></p>
+      </div>
+      <div id="test-container">
+        <p id="quote">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+          alias eius velit quaerat perspiciatis ea, officiis voluptatem,
+          praesentium in eaque unde beatae nam consequuntur maxime laudantium
+          veniam at aliquam doloribus?
+        </p>
+        <textarea id="user-input" autofocus></textarea>
+        <div id="nav-info">
+          <p id="start-test">Press ENTER to start/restart test</p>
+          <p id="reset-test">Press ESC to reset</p>
+        </div>
+      </div>
+      <div class="stats" id="current-stats">
+        <p id="stat-title">Current run</p>
+        <p>Time Left: <span id="time-left">0</span></p>
+        <p>Words Per Minute: <span id="wpm">0</span></p>
+        <p>Accuracy: <span id="accuracy">0</span>%</p>
+        <p>Errors: <span id="errors">0</span></p>
+      </div>
+      <script src="script.js"></script>
+    </div>
+  </body>
+</html>
