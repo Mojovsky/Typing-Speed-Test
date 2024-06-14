@@ -1,13 +1,19 @@
 function addClass(element, className) {
-  element.classList.add(className);
+  element.className += " " + className;
 }
 
 function removeClass(element, className) {
-  element.classList.remove(className);
+  element.className = element.className.replace(className, "");
+}
+
+function formatWord(word) {
+  return `<div class="word"><span class="letter">${word
+    .split("")
+    .join('</span><span class="letter">')}</span></div>`;
 }
 
 async function fetchWords() {
-  const response = await fetch("./words-list.json");
+  const response = await fetch("scripts/words-list.json");
   return response.json();
 }
 
@@ -22,4 +28,15 @@ async function getRandomWord() {
   }
 }
 
-export { getRandomWord, addClass, removeClass };
+async function checkGetRandomWordType() {
+  try {
+    const word = await getRandomWord();
+    console.log(word);
+  } catch (error) {
+    console.error("Error checking type:", error);
+  }
+}
+
+checkGetRandomWordType();
+
+export { getRandomWord, addClass, removeClass, formatWord };
