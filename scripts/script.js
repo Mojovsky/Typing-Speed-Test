@@ -1,4 +1,4 @@
-import { getRandomWord, formatWord } from "./words.js";
+import { getRandomWord, formatWord, addClass } from "./words.js";
 import { handleKeyUp } from "./key.js";
 
 async function runGame() {

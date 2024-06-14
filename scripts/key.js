@@ -56,13 +56,14 @@ function handleKeyUp(event) {
   function createIncorrectLetterElement(key) {
     const incorrectLetter = document.createElement("span");
     incorrectLetter.innerHTML = key;
-    incorrectLetter.className = "letter incorrect extra";
+    incorrectLetter.className = "incorrect";
     return incorrectLetter;
   }
 
   function handleSpaceKeyPress(expected) {
     if (expected !== " ") {
-      invalidateIncorrectLetters();
+      addClass(currentLetter, "incorrect");
+      moveToNextLetter();
     }
     removeClass(currentWord, "current");
     moveToNextWord();
