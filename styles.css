@@ -75,7 +75,7 @@ div.word {
   position: fixed;
   top: 18.5%;
   left: 34.5%;
-  animation: blink 0.3s infinite;
+  animation: blink 1s ease-in-out infinite forwards;
 }
 #game:focus #cursor {
   display: block;
