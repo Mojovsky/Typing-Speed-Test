@@ -29,11 +29,14 @@ function handleKeyUp(event) {
   moveCursorToCurrentLetter();
 
   function updateCurrentLetterValue(key, expected) {
+    const incorrectLetter = createIncorrectLetterElement(key);
     if (currentLetter) {
       updateLetterClassBasedOnCorrectness(currentLetter, key === expected);
       moveToNextLetter();
+    } else if (expected === " " && key !== " ") {
+      removeClass(currentWord, "current");
+      moveToNextWord();
     } else {
-      const incorrectLetter = createIncorrectLetterElement(key);
       currentWord.appendChild(incorrectLetter);
     }
   }

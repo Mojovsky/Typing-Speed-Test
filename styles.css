@@ -90,8 +90,8 @@ div.word {
   height: 1.6rem;
   background: var(--primaryColor);
   position: fixed;
-  top: 198px;
-  left: 18px;
+  top: 18.5%;
+  left: 34.5%;
   animation: blink 0.3s infinite;
 }
 #game:focus #cursor {
