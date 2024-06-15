@@ -12,8 +12,10 @@ async function newTest() {
   addClass(document.querySelector(".word"), "current");
   addClass(document.querySelector(".letter"), "current");
 
-  document.getElementById("game").addEventListener("keyup", (event) => {
-    handleKeyUp(event);
+  document.addEventListener("keyup", (event) => {
+    if (event.target === document.body) {
+      handleKeyUp(event);
+    }
   });
 }
 
