@@ -1,3 +1,5 @@
+const gameTime = 60 * 1000;
+
 function getWpm() {
   const words = [...document.querySelectorAll(".word")];
   const lastTypedWord = document.querySelector(".word.current");
@@ -15,7 +17,8 @@ function getWpm() {
       incorrectLetters.length === 0 && correctLetters.length === letters.length
     );
   });
-  return (correctWords.length / gameTime) * 60000;
+  const result = (correctWords.length / gameTime) * 60000;
+  document.getElementById("wpm-value").innerHTML = result;
 }
 
 function getWordAccuracy() {
@@ -35,5 +38,8 @@ function getWordAccuracy() {
       incorrectLetters.length === 0 && correctLetters.length === letters.length
     );
   });
-  return (correctWords.length / typedWords.length) * 100;
+  const result = (correctWords.length / typedWords.length) * 100;
+  document.getElementById("accuracy-value").innerHTML = result;
 }
+
+export { getWpm, getWordAccuracy };
