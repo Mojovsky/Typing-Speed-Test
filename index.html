@@ -7,17 +7,23 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div id="stats-overlay">
+      <h2>User's stats</h2>
+      <div class="stat">Tests run: <span>0</span></div>
+      <div class="stat">Avg. WPM: <span>0</span></div>
+      <div class="stat">Avg. Accuracy: <span>0%</span></div>
+      <div class="stat">Avg. Errors: <span>0</span></div>
+    </div>
     <main>
       <h1>TypeMojo</h1>
       <div id="game" tabindex="0">
+        <div id="words"></div>
+        <div id="cursor"></div>
+      </div>
+      <div id="stats">
         <div id="timer">
           <span>60s</span>
         </div>
-        <div id="words"></div>
-        <div id="cursor"></div>
-        <div id="focus-error"></div>
-      </div>
-      <div id="stats">
         <div id="wpm">
           <div class="stat-title">WPM</div>
           <span id="wpm-value">0</span>
