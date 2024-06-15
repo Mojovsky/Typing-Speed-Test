@@ -64,21 +64,13 @@ function handleKeyUp(event) {
   }
 
   function handleSpaceKeyPress(expected) {
-    if (expected !== " ") {
+    if (currentLetter && expected !== " ") {
       addClass(currentLetter, "incorrect");
       moveToNextLetter();
+    } else if (currentWord && expected === " ") {
+      removeClass(currentWord, "current");
+      moveToNextWord();
     }
-    removeClass(currentWord, "current");
-    moveToNextWord();
-  }
-
-  function invalidateIncorrectLetters() {
-    const lettersToInvalidate = [
-      ...document.querySelectorAll(".word.current .letter:not(.correct)"),
-    ];
-    lettersToInvalidate.forEach((letter) => {
-      addClass(letter, "incorrect");
-    });
   }
 
   function moveToNextWord() {
