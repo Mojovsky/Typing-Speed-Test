@@ -37,14 +37,13 @@ h1 {
   font-size: 1.8rem;
 }
 
-div#game {
+#game {
+  display: flex;
+  position: relative;
   margin-top: 5rem;
   line-height: 35px;
   height: 118px;
   overflow: hidden;
-}
-
-div#game:focus {
   outline: 0;
 }
 
@@ -53,7 +52,7 @@ div#game:focus {
   color: var(--textSecondary);
 }
 
-div.word {
+.word {
   display: inline-block;
   font-family: "Roboto Mono", monospace;
   margin: 0 5px;
@@ -74,16 +73,6 @@ div.word {
   100% {
     opacity: 1;
   }
-}
-#cursor {
-  display: none;
-  width: 2px;
-  height: 1.6rem;
-  background: var(--primaryColor);
-  position: fixed;
-  top: 278px;
-  left: 687px;
-  animation: blink 1s ease-in-out infinite forwards;
 }
 
 #stats {
