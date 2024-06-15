@@ -9,13 +9,24 @@
   <body>
     <main>
       <h1>TypeMojo</h1>
-      <div id="header">
-        <div id="info"></div>
-      </div>
       <div id="game" tabindex="0">
         <div id="words"></div>
         <div id="cursor"></div>
-        <div id="focus-error">Click here to focus</div>
+        <div id="focus-error"></div>
+      </div>
+      <div id="stats">
+        <div id="wpm">
+          <div class="stat-title">WPM</div>
+          <span id="wpm-value">0</span>
+        </div>
+        <div id="accuracy">
+          <div class="stat-title">Accuracy</div>
+          <span id="accuracy-value">0%</span>
+        </div>
+        <div id="errors">
+          <div class="stat-title">Errors</div>
+          <span id="errors-value">0</span>
+        </div>
       </div>
     </main>
     <script type="module" src="./scripts/script.js"></script>
