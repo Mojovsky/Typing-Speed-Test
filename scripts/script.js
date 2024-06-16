@@ -3,6 +3,8 @@ import { getStats } from "./stat-logic.js";
 import { inputValidation } from "./validation.js";
 import { startTimer } from "./timer.js";
 
+let gameState = false;
+
 async function newTest() {
   await displayWords();
 
@@ -17,14 +19,27 @@ async function newTest() {
 }
 
 async function runTest() {
-  await displayWords();
-  document.addEventListener("keydown", async (event) => {
-    if (event.key === "Enter") {
-      newTest();
-      await startTimer(60);
-      getStats();
-    }
-  });
+  gameState = true;
+  newTest();
+  await startTimer(60);
+  getStats();
+  gameState = false;
 }
 
-runTest();
+async function main() {
+  await displayWords();
+
+  document.addEventListener("keydown", handleKeyDown);
+}
+
+async function handleKeyDown(event) {
+  if (event.key === "Enter") {
+    await runTest();
+
+    if (!gameState) {
+      displayWords();
+    }
+  }
+}
+
+main();
