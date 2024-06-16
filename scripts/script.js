@@ -1,6 +1,6 @@
 import { displayWords } from "./words.js";
-import { getWpm, getWordAccuracy } from "./stat-logic.js";
-import { handleKeyUp } from "./key.js";
+import { getStats } from "./stat-logic.js";
+import { inputValidation } from "./validation.js";
 import { startTimer } from "./timer.js";
 
 async function newTest() {
@@ -11,7 +11,7 @@ async function newTest() {
 
   document.addEventListener("keyup", (event) => {
     if (event.target === document.body) {
-      handleKeyUp(event);
+      inputValidation(event);
     }
   });
 }
@@ -21,7 +21,8 @@ async function runTest() {
   document.addEventListener("keydown", async (event) => {
     if (event.key === "Enter") {
       newTest();
-      startTimer(60);
+      await startTimer(60);
+      getStats();
     }
   });
 }
