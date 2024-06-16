@@ -1,13 +1,10 @@
-import { getRandomWord, formatWord, addClass } from "./words.js";
+import { getRandomWord, formatWord, addClass, displayWords } from "./words.js";
 import { getWpm, getWordAccuracy } from "./stat-logic.js";
 import { handleKeyUp } from "./key.js";
+import { startTimer } from "./timer.js";
 
 async function newTest() {
-  document.getElementById("words").innerHTML = "";
-  for (let i = 0; i < 100; i++) {
-    let word = await getRandomWord();
-    document.getElementById("words").innerHTML += formatWord(word);
-  }
+  await displayWords();
 
   addClass(document.querySelector(".word"), "current");
   addClass(document.querySelector(".letter"), "current");
@@ -19,4 +16,14 @@ async function newTest() {
   });
 }
 
-newTest();
+async function runTest() {
+  await displayWords();
+  document.addEventListener("keydown", async (event) => {
+    if (event.key === "Enter") {
+      newTest();
+      startTimer(60);
+    }
+  });
+}
+
+runTest();

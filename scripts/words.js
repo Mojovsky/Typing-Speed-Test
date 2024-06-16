@@ -28,15 +28,12 @@ async function getRandomWord() {
   }
 }
 
-async function checkGetRandomWordType() {
-  try {
-    const word = await getRandomWord();
-    console.log(word);
-  } catch (error) {
-    console.error("Error checking type:", error);
+async function displayWords() {
+  document.getElementById("words").innerHTML = "";
+  for (let i = 0; i < 100; i++) {
+    let word = await getRandomWord();
+    document.getElementById("words").innerHTML += formatWord(word);
   }
 }
 
-checkGetRandomWordType();
-
-export { getRandomWord, addClass, removeClass, formatWord };
+export { getRandomWord, addClass, removeClass, formatWord, displayWords };
