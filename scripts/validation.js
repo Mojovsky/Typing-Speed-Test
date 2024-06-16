@@ -1,4 +1,4 @@
-function handleKeyUp(event) {
+function inputValidation(event) {
   const key = event.key;
   const currentWord = document.querySelector(".word.current");
   const currentLetter = document.querySelector(".letter.current");
@@ -54,6 +54,7 @@ function handleKeyUp(event) {
     if (currentLetter) {
       currentLetter.classList.remove("current");
     }
+    checkWordAccuracy(currentWord);
     currentWord.nextSibling.classList.add("current");
     currentWord.nextSibling.firstChild.classList.add("current");
   }
@@ -83,6 +84,19 @@ function handleKeyUp(event) {
     currentLetter.previousSibling.classList.add("current");
     currentLetter.previousSibling.classList.remove("incorrect", "correct");
   }
+
+  function checkWordAccuracy() {
+    if (currentWord) {
+      const isWordCorrect = Array.from(currentWord.children).every((letter) =>
+        letter.classList.contains("correct")
+      );
+      if (isWordCorrect) {
+        currentWord.classList.add("correct");
+      } else {
+        currentWord.classList.add("incorrect");
+      }
+    }
+  }
 }
 
-export { handleKeyUp };
+export { inputValidation };
