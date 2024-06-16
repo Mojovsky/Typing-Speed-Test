@@ -30,9 +30,6 @@ function inputValidation(event) {
       currentLetter.classList.toggle("correct", key === expected);
       currentLetter.classList.toggle("incorrect", key !== expected);
       moveToNextLetter();
-    } else if (expected === " " && key !== " ") {
-      currentWord.classList.remove("current");
-      moveToNextWord();
     }
   }
 
