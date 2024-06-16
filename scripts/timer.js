@@ -12,4 +12,12 @@ function startTimer(seconds) {
   });
 }
 
-export { startTimer };
+function resetTimer() {
+  const timerElement = document.getElementById("timer");
+  const currentTimer = parseInt(timerElement.innerHTML.split("s")[0]);
+  if (!isNaN(currentTimer)) {
+    startTimer(currentTimer);
+  }
+}
+
+export { startTimer, resetTimer };
