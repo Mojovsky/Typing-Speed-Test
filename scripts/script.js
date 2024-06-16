@@ -1,6 +1,7 @@
 import { displayWords } from "./words.js";
 import { getStats } from "./stat-logic.js";
 import { inputValidation } from "./validation.js";
+import { storeData, getStoredData } from "./data.js";
 
 let timerId;
 let isRunning = false;
@@ -32,6 +33,7 @@ async function runTest() {
   newTest();
   timerId = await startTimer(60);
   getStats();
+  storeData();
 }
 
 function newTest() {
@@ -54,4 +56,13 @@ async function startTimer(seconds) {
   });
 }
 
+function setUserStats() {
+  const userStats = getStoredData();
+  document.getElementById("tests").innerHTML = userStats.tests;
+  document.getElementById("avg-wpm").innerHTML = userStats.wpm;
+  document.getElementById("avg-accuracy").innerHTML = userStats.accuracy;
+  document.getElementById("avg-errors").innerHTML = userStats.errors;
+}
+
+setUserStats();
 main();
