@@ -8,6 +8,10 @@ function inputValidation(event) {
   const isBackspace = key === "Backspace";
   const isFirstLetter = currentLetter === currentWord.firstChild;
 
+  if (key === "Enter") {
+    return;
+  }
+
   if (isLetter) {
     updateCurrentLetterValue(key, expected);
   }
