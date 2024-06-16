@@ -22,53 +22,32 @@ function handleKeyUp(event) {
     handleBackspaceKeyPress(currentLetter, isFirstLetter);
   }
 
-  if (currentWord.getBoundingClientRect().top > 250) {
-    updateMarginTopOfWords();
-  }
-
-  moveCursorToCurrentLetter();
-
   function updateCurrentLetterValue(key, expected) {
-    const incorrectLetter = createIncorrectLetterElement(key);
     if (currentLetter) {
-      updateLetterClassBasedOnCorrectness(currentLetter, key === expected);
+      currentLetter.classList.remove("current");
+      currentLetter.classList.toggle("correct", key === expected);
+      currentLetter.classList.toggle("incorrect", key !== expected);
       moveToNextLetter();
     } else if (expected === " " && key !== " ") {
-      removeClass(currentWord, "current");
+      currentWord.classList.remove("current");
       moveToNextWord();
-    } else {
-      currentWord.appendChild(incorrectLetter);
-    }
-  }
-
-  function updateLetterClassBasedOnCorrectness(letter, isCorrect) {
-    addClass(letter, isCorrect ? "correct" : "incorrect");
-    removeClass(letter, "current");
-    if (letter.nextSibling) {
-      addClass(letter.nextSibling, "current");
     }
   }
 
   function moveToNextLetter() {
-    removeClass(currentLetter, "current");
-    if (currentLetter.nextSibling) {
-      addClass(currentLetter.nextSibling, "current");
+    currentLetter?.classList.remove("current");
+    const nextLetter = currentLetter?.nextElementSibling;
+    if (nextLetter) {
+      nextLetter.classList.add("current");
     }
-  }
-
-  function createIncorrectLetterElement(key) {
-    const incorrectLetter = document.createElement("span");
-    incorrectLetter.innerHTML = key;
-    incorrectLetter.className = "incorrect";
-    return incorrectLetter;
   }
 
   function handleSpaceKeyPress(expected) {
     if (currentLetter && expected !== " ") {
-      addClass(currentLetter, "incorrect");
+      currentLetter.classList.add("incorrect");
       moveToNextLetter();
     } else if (currentWord && expected === " ") {
-      removeClass(currentWord, "current");
+      currentWord.classList.remove("current");
       moveToNextWord();
     }
   }
@@ -86,51 +65,25 @@ function handleKeyUp(event) {
       moveToPreviousWord();
     }
     if (currentLetter && !isFirstLetter) {
-      moveBackToPreviousLetter();
-    }
-    if (!currentLetter) {
-      moveToLastLetter();
+      moveToPreviousLetter();
     }
   }
 
   function moveToPreviousWord() {
-    removeClass(currentWord, "current");
-    addClass(currentWord.previousSibling, "current");
-    removeClass(currentLetter, "current");
-    addClass(currentWord.previousSibling.lastChild, "current");
-    removeClass(currentWord.previousSibling.lastChild, "incorrect");
-    removeClass(currentWord.previousSibling.lastChild, "correct");
+    currentWord.classList.remove("current");
+    currentWord.previousSibling.classList.add("current");
+    currentLetter.classList.remove("current");
+    currentWord.previousSibling.lastChild.classList.add("current");
+    currentWord.previousSibling.lastChild.classList.remove(
+      "incorrect",
+      "correct"
+    );
   }
 
-  function moveBackToPreviousLetter() {
-    removeClass(currentLetter, "current");
-    addClass(currentLetter.previousSibling, "current");
-    removeClass(currentLetter.previousSibling, "incorrect");
-    removeClass(currentLetter.previousSibling, "correct");
-  }
-
-  function moveToLastLetter() {
-    addClass(currentWord.lastChild, "current");
-    removeClass(currentWord.lastChild, "incorrect");
-    removeClass(currentWord.lastChild, "correct");
-  }
-
-  function updateMarginTopOfWords() {
-    const wordsElement = document.getElementById("words");
-    const margin = parseInt(wordsElement.style.marginTop || "0px");
-    wordsElement.style.marginTop = margin - 35 + "px";
-  }
-
-  function moveCursorToCurrentLetter() {
-    const nextLetter = document.querySelector(".letter.current");
-    const nextWord = document.querySelector(".word.current");
-    const cursor = document.getElementById("cursor");
-    cursor.style.top =
-      (nextLetter || nextWord).getBoundingClientRect().top + 2 + "px";
-    cursor.style.left =
-      (nextLetter || nextWord).getBoundingClientRect()[
-        nextLetter ? "left" : "right"
-      ] + "px";
+  function moveToPreviousLetter() {
+    currentLetter.classList.remove("current");
+    currentLetter.previousSibling.classList.add("current");
+    currentLetter.previousSibling.classList.remove("incorrect", "correct");
   }
 }
 
