@@ -30,7 +30,7 @@ async function runTest() {
   isRunning = true;
   await displayWords();
   newTest();
-  timerId = await startTimer(20);
+  timerId = await startTimer(60);
   getStats();
 }
 
