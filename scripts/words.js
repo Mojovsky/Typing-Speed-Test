@@ -1,11 +1,3 @@
-function addClass(element, className) {
-  element.className += " " + className;
-}
-
-function removeClass(element, className) {
-  element.className = element.className.replace(className, "");
-}
-
 function formatWord(word) {
   return `<div class="word"><span class="letter">${word
     .split("")
@@ -36,4 +28,4 @@ async function displayWords() {
   }
 }
 
-export { getRandomWord, addClass, removeClass, formatWord, displayWords };
+export { getRandomWord, formatWord, displayWords };
