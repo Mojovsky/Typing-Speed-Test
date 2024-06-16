@@ -3,46 +3,54 @@ import { getStats } from "./stat-logic.js";
 import { inputValidation } from "./validation.js";
 
 let timerId;
+let isRunning = false;
 
 async function main() {
   await displayWords();
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      runTest();
+  document.addEventListener("keydown", handleKeyDown);
+}
+
+function handleKeyDown(event) {
+  if (event.key === "Enter" && !isRunning) {
+    runTest();
+  } else if (event.key === "Escape" && isRunning) {
+    runTest();
+  } else {
+    if (event.target === document.body) {
+      inputValidation(event);
     }
-  });
+  }
 }
 
 async function runTest() {
+  if (isRunning) {
+    clearInterval(timerId); // Clear existing timer
+  }
+
+  isRunning = true;
   await displayWords();
   newTest();
   timerId = await startTimer(20);
   getStats();
 }
 
-async function newTest() {
+function newTest() {
   document.querySelector(".word").classList.add("current");
   document.querySelector(".letter").classList.add("current");
-
-  document.addEventListener("keydown", (event) => {
-    if (event.target === document.body) {
-      inputValidation(event);
-    }
-  });
 }
 
 async function startTimer(seconds) {
   return new Promise((resolve) => {
     let timer = seconds;
-    const interval = setInterval(() => {
+    timerId = setInterval(() => {
       timer--;
       document.getElementById("timer").innerHTML = `<span>${timer}s</span>`;
       if (timer <= 0) {
-        clearInterval(interval);
+        clearInterval(timerId);
+        isRunning = false; // Reset the flag when the timer ends
         resolve();
       }
     }, 1000);
-    return interval;
   });
 }
 
