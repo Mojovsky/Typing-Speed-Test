@@ -33,10 +33,14 @@ function updateElementText(elementId, text) {
   document.getElementById(elementId).innerHTML = text;
 }
 
+function getElementText(elementId) {
+  return document.getElementById(elementId).innerHTML;
+}
+
 function getStats() {
   getWpm();
   getWordAccuracy();
   countIncorrectLetters();
 }
 
-export { getStats };
+export { getStats, getElementText };
