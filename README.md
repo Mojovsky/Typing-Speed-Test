@@ -1,19 +1,18 @@
-# Typing-Speed-Test
+# TypeMojo
 
-// Load Quote //
+Simple typing speed test which calculates:
 
-// Handle user input //
+- WPM per test and historical average
+- Accuracy per test and historical average
+- Number of errors (wrongly typed letters) per test and historical average
 
-// Check word completion //
+In order to start a test, press `ENTER`. During a test you can press `ESC` to reset the test.
 
-// Calculate stats //
+The test requires you to press `SPACE` between words, but they do not count towards correct or incorrect characters.
 
-// Update UI //
+## Features to add/improve
 
-// Start test //
-
-// End test //
-
-// Reset test //
-
-// Store stats in local storage //
+- Cursor indicator
+- Live statistics
+- Option to choose test length time
+- Option to increase font size
