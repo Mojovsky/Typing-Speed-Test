@@ -25,7 +25,7 @@ function handleKeyDown(event) {
 
 async function runTest() {
   if (isRunning) {
-    clearInterval(timerId); // Clear existing timer
+    clearInterval(timerId);
   }
 
   isRunning = true;
@@ -49,7 +49,7 @@ async function startTimer(seconds) {
       document.getElementById("timer").innerHTML = `<span>${timer}s</span>`;
       if (timer <= 0) {
         clearInterval(timerId);
-        isRunning = false; // Reset the flag when the timer ends
+        isRunning = false;
         resolve();
       }
     }, 1000);
