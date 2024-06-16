@@ -37,9 +37,9 @@ function storeData() {
 function getStoredData() {
   return {
     tests: localStorage.getItem("tests") || 0,
-    wpm: localStorage.getItem("wpm") || 0,
-    accuracy: localStorage.getItem("accuracy") || 0,
-    errors: localStorage.getItem("errors") || 0,
+    wpm: parseInt(localStorage.getItem("wpm")).toFixed(0) || 0,
+    accuracy: parseInt(localStorage.getItem("accuracy")).toFixed(0) || 0,
+    errors: parseInt(localStorage.getItem("errors")).toFixed(0) || 0,
   };
 }
 
