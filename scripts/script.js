@@ -1,4 +1,4 @@
-import { getRandomWord, formatWord, addClass, displayWords } from "./words.js";
+import { displayWords } from "./words.js";
 import { getWpm, getWordAccuracy } from "./stat-logic.js";
 import { handleKeyUp } from "./key.js";
 import { startTimer } from "./timer.js";
@@ -6,8 +6,8 @@ import { startTimer } from "./timer.js";
 async function newTest() {
   await displayWords();
 
-  addClass(document.querySelector(".word"), "current");
-  addClass(document.querySelector(".letter"), "current");
+  document.querySelector(".word").classList.add("current");
+  document.querySelector(".letter").classList.add("current");
 
   document.addEventListener("keyup", (event) => {
     if (event.target === document.body) {

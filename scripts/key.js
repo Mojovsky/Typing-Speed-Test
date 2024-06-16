@@ -1,5 +1,3 @@
-import { addClass, removeClass } from "./words.js";
-
 function handleKeyUp(event) {
   const key = event.key;
   const currentWord = document.querySelector(".word.current");
@@ -54,10 +52,10 @@ function handleKeyUp(event) {
 
   function moveToNextWord() {
     if (currentLetter) {
-      removeClass(currentLetter, "current");
+      currentLetter.classList.remove("current");
     }
-    addClass(currentWord.nextSibling, "current");
-    addClass(currentWord.nextSibling.firstChild, "current");
+    currentWord.nextSibling.classList.add("current");
+    currentWord.nextSibling.firstChild.classList.add("current");
   }
 
   function handleBackspaceKeyPress(currentLetter, isFirstLetter) {
