@@ -1,11 +1,6 @@
-const gameTime = 60 * 1000;
-
 function getWpm() {
   const typedWords = getTypedWords();
-  const correctWords = typedWords.filter((word) =>
-    word.classList.contains("correct")
-  );
-  const result = (correctWords.length / typedWords.length) * 60;
+  const result = typedWords.length;
   updateElementText("wpm-value", result.toFixed(0));
 }
 
