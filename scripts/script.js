@@ -63,5 +63,6 @@ function setUserStats() {
   document.getElementById("avg-accuracy").innerHTML = userStats.accuracy;
   document.getElementById("avg-errors").innerHTML = userStats.errors;
 }
+
 setUserStats();
 main();
