@@ -10,7 +10,7 @@ function getWordAccuracy() {
     word.classList.contains("correct")
   );
   const result = (correctWords.length / typedWords.length) * 100;
-  updateElementText("accuracy-value", result.toFixed(0) + "%");
+  updateElementText("accuracy-value", result.toFixed(0));
 }
 
 function countIncorrectLetters() {
