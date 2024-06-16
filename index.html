@@ -9,10 +9,12 @@
   <body>
     <div id="stats-overlay">
       <h2>User's stats</h2>
-      <div class="stat">Tests run: <span>0</span></div>
-      <div class="stat">Avg. WPM: <span>0</span></div>
-      <div class="stat">Avg. Accuracy: <span>0%</span></div>
-      <div class="stat">Avg. Errors: <span>0</span></div>
+      <div class="stat">Tests run: <span id="tests">0</span></div>
+      <div class="stat">Avg. WPM: <span id="avg-wpm">0</span></div>
+      <div class="stat">
+        Avg. Accuracy: <span id="avg-accuracy">0</span><span>%</span>
+      </div>
+      <div class="stat">Avg. Errors: <span id="avg-errors">0</span></div>
     </div>
     <main>
       <h1>TypeMojo</h1>
@@ -29,7 +31,7 @@
         </div>
         <div id="accuracy">
           <div class="stat-title">Accuracy</div>
-          <span id="accuracy-value">0%</span>
+          <span id="accuracy-value">0</span><span>%</span>
         </div>
         <div id="errors">
           <div class="stat-title">Errors</div>
@@ -38,6 +40,5 @@
       </div>
     </main>
     <script type="module" src="./scripts/script.js"></script>
-    <script type="module" src="./scripts/words.js"></script>
   </body>
 </html>
