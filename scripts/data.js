@@ -35,11 +35,16 @@ function storeData() {
 }
 
 function getStoredData() {
+  const wpm = parseInt(localStorage.getItem("wpm")) || 0;
+  const accuracy = parseInt(localStorage.getItem("accuracy")) || 0;
+  const errors = parseInt(localStorage.getItem("errors")) || 0;
+  const tests = parseInt(localStorage.getItem("tests")) || 0;
+
   return {
-    tests: localStorage.getItem("tests") || 0,
-    wpm: parseInt(localStorage.getItem("wpm")).toFixed(0) || 0,
-    accuracy: parseInt(localStorage.getItem("accuracy")).toFixed(0) || 0,
-    errors: parseInt(localStorage.getItem("errors")).toFixed(0) || 0,
+    tests,
+    wpm: wpm.toFixed(0),
+    accuracy: accuracy.toFixed(0),
+    errors: errors.toFixed(0),
   };
 }
 
